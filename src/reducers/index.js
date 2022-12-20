@@ -1,33 +1,42 @@
-import { RESET_JOKES, FIND_JOKES_SUCCESS, FIND_JOKES_FAIL } from "../actions";
+import { RESET_JOKES, FIND_JOKES_SUCCESS, FIND_JOKES_FAIL, FIND_JOKES_START } from "../actions";
 
-const initialState = {
+const jokes = [{
     id: null,
     type: "",
     setup: "",
     punchline: ""
-}
+}];
+
+const initialState = {
+    jokes: jokes,
+    error: '',
+    isFetching: false
+};
+
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
-        // case RESET_JOKES:
-        //     return {
-        //         ...state,
-        //         movies: state.movies.filter(item=>(action.payload !== item.id))
-        //     }
-        // case FIND_JOKES_SUCCESS:
-        //     const newMovie = {
-        //         ...action.payload,
-        //         id: Date.now()
-        //     }
-        // case FIND_JOKES_FAIL:
-        //     const newMovie = {
-        //         ...action.payload,
-        //         id: Date.now()
-        //     }
-        //     return {
-        //         ...state, 
-        //         movies: [...state.movies, newMovie]
-        //     }
+        case RESET_JOKES:
+            return {
+                initialState
+            }
+        case FIND_JOKES_START:
+            return {
+                ...state,
+                error: '',
+                isFetching: true
+            }
+        case FIND_JOKES_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                jokes: action.payload
+            }
+        case FIND_JOKES_FAIL:
+            return {
+                ...state, 
+                error: action.payload
+            }
         default:
             return state;
     }
