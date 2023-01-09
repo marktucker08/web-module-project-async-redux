@@ -34,7 +34,7 @@ const App = (props) => {
       <div className="col-sm-6 headerBar">
             <div className="btn btn-sm btn-primary" onClick={clearJokes}><span>Clear Jokes</span></div>
             <Link to="/jokes" className="btn btn-sm btn-primary" onClick={randomButton}>Random Joke</Link>
-            <Link to="/jokes" className="btn btn-sm btn-success" onClick={randomTenButton}><i className="material-icons">&#xE147;</i> <span>Random Ten Jokes</span></Link>
+            <Link to="/jokes" className="btn btn-sm btn-success" onClick={randomTenButton}> <span>Random Ten Jokes</span></Link>
         </div>
           <div className='content'>
             <Switch>
