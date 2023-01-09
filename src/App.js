@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import JokeList from './JokeList';
 import { findJokesStart, resetJokes } from './actions';
@@ -9,18 +9,23 @@ import { connect } from 'react-redux';
 
 const App = (props) => {
   
+  const randomURL = "https://official-joke-api.appspot.com/random_joke";
+  const randomTenURL = "https://official-joke-api.appspot.com/random_ten";
+
   const randomButton = () => {
-    const randomURL = "https://official-joke-api.appspot.com/random_joke";
-    props.findJokesStart(randomURL);
-  }
+    // useEffect(() => {
+      props.findJokesStart(randomURL);
+    // }, [])
+  }    
   
   const clearJokes = () => {
     props.resetJokes();
   }
 
   const randomTenButton = () => {
-    const randomTenURL = "https://official-joke-api.appspot.com/random_ten";
-    props.findJokesStart(randomTenURL);
+    useEffect(() => {
+      props.findJokesStart(randomTenURL);
+    }, [])
   }
 
   return (
@@ -34,7 +39,7 @@ const App = (props) => {
           <div className='content'>
             <Switch>
             <Route path="/jokes">
-                <JokeList/>
+                 <JokeList/>
               </Route>
               <Route path="/">
                 <Redirect to="/jokes"/>

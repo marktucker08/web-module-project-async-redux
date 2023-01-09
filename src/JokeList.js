@@ -18,8 +18,8 @@ console.log(props.jokes)
 
                 <tbody>
                     {
-                        // props.jokes.length > 1 ? 
-                        props.jokes.length >=1 ? props.jokes.map(joke => {
+                        // props.jokes.length > 1 ? .length >=1
+                        props.jokes.length > 1 ? props.jokes.map(joke => {
                             <tr className={joke.id}>
                                 <td>{joke.type}</td>
                                 <td>{joke.id}</td>
@@ -27,7 +27,7 @@ console.log(props.jokes)
                                 <td>{joke.punchline}</td>
                             </tr> 
                         }) 
-                        : <tr className={props.jokes.id}>
+                        : <tr>
                                 <td>{props.jokes.type}</td>
                                 <td>{props.jokes.id}</td>
                                 <td>{props.jokes.setup}</td>
